@@ -207,7 +207,7 @@ int main(void)
 	 * instruction, else we bail out.
 	 */
 #if defined(__GNUC__)
-#elif defined(__x86_64__)
+#if defined(__x86_64__)
 	uint64_t rflags, tmp;
 	/* Read the value of rflags register. */
 	asm("pushf\npop %0" : "=r" (rflags));
@@ -223,9 +223,10 @@ err_out:
 				"does not support the CPUID instruction. \n");
 		return 0;
 	}
+	enumerate_cache();
 #else
 #error "Unsupported arch!"
-#endif
-	enumerate_cache();
+#endif /* defined(__x86_64__) */
+#endif /* defined(__GNUC__) */
 	return 0;
 }
