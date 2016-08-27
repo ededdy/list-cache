@@ -182,7 +182,7 @@ static void enumerate_cache(void)
 		indexing =((edx & 0x00000004));
 
 		total_size = ways * line_partitions * line_size * sets;
-		prefix = "";
+		prefix = " ";
 		bytes_to_prefix(&total_size, &prefix);
 		fprintf(stdout, "%2s%u%s %8s %6u %8u %8u %8u%s %8zu%s "
 				"%4s %6s %6s\n",
